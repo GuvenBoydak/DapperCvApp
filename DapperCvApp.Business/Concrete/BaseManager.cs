@@ -7,7 +7,7 @@ namespace DapperCvApp.Business
     {
         protected readonly IRepository<T> _repository;
 
-        public BaseManager(DataAccess.IRepository<T> repository)
+        public BaseManager(IRepository<T> repository)
         {
             _repository = repository;
         }
@@ -32,7 +32,7 @@ namespace DapperCvApp.Business
            await _repository.InsertAsync(entity);
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             _repository.Update(entity);
         }

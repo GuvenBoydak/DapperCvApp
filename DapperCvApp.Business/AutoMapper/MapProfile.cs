@@ -9,6 +9,9 @@ namespace DapperCvApp.Business
         public MapProfile()
         {
             CreateMap<AppUserLoginDto, AppUser>();
+            CreateMap<AppUser, AppUserListDto>().ReverseMap();
+            CreateMap<AppUser, AppUserUpdateViewModel>().ReverseMap();
+
         }
     }
 }

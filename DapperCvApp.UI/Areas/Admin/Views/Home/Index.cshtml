@@ -1,7 +1,56 @@
 ﻿@{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@model AppUserListDto
 
+<form asp-action="Index" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+      <div class="form-group row">
+        <div class="col-6">
+            @{
+                if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
 
-<p>Burası admın ltrdadasdasdsadsadsadsadsadsad</p>
+                    <label>Profil Fotografı :</label>
+                    <img src="/img/@Model.ImageUrl" alt="@Model.FirstName" style="width:6rem!important; height:5rem!importent;" />
+
+                }
+                else
+                {
+                    <div class="alert alert-light text-center">
+                        Her Hangi bir resim sistemde kayıtlı degil
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label>Adınız :</label>
+        <input asp-for="FirstName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Soyadınız :</label>
+        <input asp-for="LastName"  class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Email :</label>
+        <input asp-for="Email" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Telefon Numarası :</label>
+        <input asp-for="PhoneNumber" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Adres :</label>
+        <input asp-for="Adress" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Ön Yazı :</label>
+        <input asp-for="Description" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <a type="submit" class="btn btn-primary" asp-action="Update" asp-route-id="@Model.Id">Düzenle</a>
+    </div>
+</form>
 

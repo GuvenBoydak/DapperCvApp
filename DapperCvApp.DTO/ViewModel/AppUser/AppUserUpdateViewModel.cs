@@ -1,6 +1,8 @@
-﻿namespace DapperCvApp.DTO
+﻿using Microsoft.AspNetCore.Http;
+
+namespace DapperCvApp.DTO
 {
-    public class AppUserUpdateDto:IDto
+    public class AppUserUpdateViewModel
     {
         public int Id { get; set; }
 
@@ -19,5 +21,7 @@
         public string Description { get; set; }
 
         public string UserName { get; set; }
+
+        public IFormFile Pıcture { get; set; }
     }
 }

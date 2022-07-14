@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model AppUserUpdateViewModel
+<form asp-action="Index" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Adınız :</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Soyadınız :</label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Email :</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Telefon Numarası :</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Adres :</label>
+        <input asp-for="Adress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ön Yazı :</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group row">
+        <div class="col-6">
+            @{
+                if (Model.ImageUrl==null)
+                {
+
+                    <label>Profil Fotografı :</label>
+                    <img src="/img/@Model.ImageUrl" alt="@Model.FirstName" />
+
+                }
+                else
+                {
+                    <div class="alert alert-light text-center">
+                        Her Hangi bir resim sistemde kayıtlı degil
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-6">
+            <label>Resim Seç </label>
+            <input type="file" asp-for="Pıcture" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" asp-action="Update">Düzenle</button>
+    </div>
+</form>

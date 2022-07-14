@@ -1,11 +1,12 @@
-﻿using DapperCvApp.Entities;
+﻿using DapperCvApp.DataAccess.Context;
+using DapperCvApp.Entities;
 using System.Data;
 
 namespace DapperCvApp.DataAccess
 {
     public class DPSocialMediaIconRepository : DPGenericRepository<SocialMediaIcon>, ISocialMediaIconRepository
     {
-        public DPSocialMediaIconRepository(IDbConnection dbConnection) : base(dbConnection)
+        public DPSocialMediaIconRepository( DapperContext dapperContext) : base( dapperContext)
         {
         }
     }

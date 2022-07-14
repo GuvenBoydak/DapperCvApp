@@ -16,5 +16,21 @@ namespace DapperCvApp.Business
         {
             return await _userRepository.CheckUserAsync(user);
         }
+
+        public Task<AppUser> FindByUserAsync(string userName)
+        {
+            return _userRepository.FindByUserAsync(userName);
+        }
+
+        public override async void Update(AppUser entity)
+        {
+            AppUser updatedUser=await _repository.GetByIdAsync(entity.Id);
+
+            entity.UserName = updatedUser.UserName != default ? updatedUser.UserName : entity.UserName;
+            entity.Password = updatedUser.Password!= default ? updatedUser.Password : entity.Password;
+
+            base.Update(entity);
+        }
+
     }
 }

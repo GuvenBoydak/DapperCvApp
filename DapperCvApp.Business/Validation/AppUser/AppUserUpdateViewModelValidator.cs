@@ -1,11 +1,11 @@
-﻿using DapperCvApp.DTO;
-using FluentValidation;
+﻿using FluentValidation;
+using DapperCvApp.DTO;
 
 namespace DapperCvApp.Business
 {
-    public class AppUserUpdateDtoValidator:AbstractValidator<AppUserUpdateDto>
+    public class AppUserUpdateViewModelValidator:AbstractValidator<AppUserUpdateViewModel>
     {
-        public AppUserUpdateDtoValidator()
+        public AppUserUpdateViewModelValidator()
         {
             RuleFor(x => x.Id).GreaterThan(0).WithMessage("ID 0 dan bütük olamalıdır.");
             RuleFor(x => x.FirstName).NotEmpty().WithMessage("İsim Alanı Boş Geçilemez");

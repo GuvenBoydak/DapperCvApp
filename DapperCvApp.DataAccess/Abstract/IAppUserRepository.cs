@@ -10,5 +10,8 @@ namespace DapperCvApp.DataAccess
     public interface IAppUserRepository:IRepository<AppUser>
     {
         Task<AppUser> CheckUserAsync(AppUser entity);
+
+        Task<AppUser> FindByUserAsync(string userName);
+
     }
 }

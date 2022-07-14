@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DapperCvApp.DataAccess;
+using DapperCvApp.DataAccess.Context;
 using System.Data;
 using System.Reflection;
 using Module = Autofac.Module;
@@ -10,6 +11,9 @@ namespace DapperCvApp.Business
     {
         protected override void Load(ContainerBuilder builder)
         {
+          
+            builder.RegisterType<DapperContext>().SingleInstance();
+
             builder.RegisterGeneric(typeof(DPGenericRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(BaseManager<>)).As(typeof(IBaseService<>)).InstancePerLifetimeScope();
 
