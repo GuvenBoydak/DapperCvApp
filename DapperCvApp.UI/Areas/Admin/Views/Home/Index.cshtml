@@ -12,7 +12,7 @@
                 {
 
                     <label>Profil Fotografı :</label>
-                    <img src="/img/@Model.ImageUrl" alt="@Model.FirstName" style="width:6rem!important; height:5rem!importent;" />
+                    <img src="/img/@Model.ImageUrl" alt="@Model.FirstName" style="width:6rem!important; height:5rem!important;" />
 
                 }
                 else
@@ -28,26 +28,32 @@
     <div class="form-group">
         <label>Adınız :</label>
         <input asp-for="FirstName" class="form-control" readonly />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label>Soyadınız :</label>
         <input asp-for="LastName"  class="form-control" readonly/>
+        <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label>Email :</label>
         <input asp-for="Email" class="form-control" readonly/>
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label>Telefon Numarası :</label>
         <input asp-for="PhoneNumber" class="form-control" readonly/>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label>Adres :</label>
         <input asp-for="Adress" class="form-control" readonly/>
+        <span asp-validation-for="Adress" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label>Ön Yazı :</label>
         <input asp-for="Description" class="form-control" readonly/>
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
         <a type="submit" class="btn btn-primary" asp-action="Update" asp-route-id="@Model.Id">Düzenle</a>

@@ -1,0 +1,65 @@
+﻿@model List<EducationListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <a asp-action="Save" asp-controller="Education" class="btn btn-success m-2">Egitim bilgisi Ekle</a>
+</div>
+
+<div class="container">
+    <div class="row bg-light ">
+        <div class="col-10 offset-1 ">
+            <table class="table table-hover table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Üniversite</th>
+                        <th>Bölüm</th>
+                        <th>Açıklama</th>
+                        <th>Başlangıç Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int id = 0;
+                    }
+                    @foreach (EducationListDto item in Model)
+                    {
+                        <tr>
+                            @{
+                                id++;
+                            }
+                            <td>@id</td>
+                            <td>@item.Title</td>
+                            <td>@item.SubTitle</td>
+                            <td>@item.Description</td>
+                            <td>@item.StartDate.Year</td>
+                            <td>
+                                @if (string.IsNullOrWhiteSpace(@item.EndDate.ToString()))
+                                {
+                                    <p>Devam ediyor</p>
+                                }
+                                else
+                                    @item.EndDate
+
+
+                                </td>
+                                <td>
+                                    <a asp-action="Update" asp-controller="Education" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Güncelle</a>
+                                    <a onclick="return confirm('Silmek istediginizden Eminmisiniz...')" asp-action="Delete" asp-controller="Education" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                                </td>
+                            </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

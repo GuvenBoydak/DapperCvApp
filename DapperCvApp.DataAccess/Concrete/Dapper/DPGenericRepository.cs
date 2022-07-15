@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using DapperCvApp.DataAccess.Context;
 using DapperCvApp.Entities;
 using System.Data;
@@ -14,13 +15,14 @@ namespace DapperCvApp.DataAccess
             _dapperContext = dapperContext;
         }
 
-        public void Delete(T entity)
+        public bool Delete(T entity)
         {          
             using (IDbConnection con = _dapperContext.CreateConnection())
             {
                 T deletedEntity = con.Get<T>(entity.Id);
                 deletedEntity.DeletedDate = DateTime.Now;
                 deletedEntity.Status = DataStatus.Deleted;
+               return Update(deletedEntity);
             }            
         }
 
@@ -41,22 +43,27 @@ namespace DapperCvApp.DataAccess
 
         }
 
-        public async Task InsertAsync(T entity)
+        public async Task<int> InsertAsync(T entity)
         {
             using (IDbConnection con = _dapperContext.CreateConnection())
             {
-                await con.InsertAsync<T>(entity);
+              return await con.InsertAsync<T>(entity);
             }
         }
 
-        public void Update(T entity)
+        public bool Update(T entity)
         {
-            entity.UpdatedDate = DateTime.Now;
-            entity.Status = DataStatus.Updated;
+            if (entity.Status!=DataStatus.Deleted)
+            {
+                entity.UpdatedDate = DateTime.Now;
+                entity.Status = DataStatus.Updated;
+            }        
             using (IDbConnection con = _dapperContext.CreateConnection())
             {
-                con.Update(entity);
+              return  con.Update(entity);
             }
         }
+
+        
     }
 }

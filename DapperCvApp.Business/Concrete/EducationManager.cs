@@ -5,8 +5,15 @@ namespace DapperCvApp.Business
 {
     public class EducationManager : BaseManager<Education>,IEducationService
     {
-        public EducationManager(IRepository<Education> repository) : base(repository)
+        private readonly IEducationRepository _educationRepository;
+        public EducationManager(IRepository<Education> repository, IEducationRepository educationRepository) : base(repository)
         {
+            _educationRepository = educationRepository;
+        }
+
+        public async Task<IEnumerable<Education>> GetActiveAsync()
+        {
+            return await _educationRepository.GetActiveAsync();
         }
     }
 }

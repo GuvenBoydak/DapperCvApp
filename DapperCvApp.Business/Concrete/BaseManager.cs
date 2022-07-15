@@ -12,9 +12,9 @@ namespace DapperCvApp.Business
             _repository = repository;
         }
 
-        public void Delete(T entity)
+        public bool Delete(T entity)
         {
-            _repository.Delete(entity);
+          return  _repository.Delete(entity);
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -27,14 +27,14 @@ namespace DapperCvApp.Business
             return await _repository.GetByIdAsync(id);
         }
 
-        public async Task InsertAsync(T entity)
+        public async Task<int> InsertAsync(T entity)
         {
-           await _repository.InsertAsync(entity);
+          return await _repository.InsertAsync(entity);
         }
 
-        public virtual void Update(T entity)
+        public virtual Task<bool> UpdateAsync(T entity)
         {
-            _repository.Update(entity);
+           return Task.FromResult(_repository.Update(entity));
         }
     }
 }

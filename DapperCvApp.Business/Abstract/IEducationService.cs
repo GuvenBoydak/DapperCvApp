@@ -4,5 +4,7 @@ namespace DapperCvApp.Business
 {
     public interface IEducationService:IBaseService<Education>
     {
+        Task<IEnumerable<Education>> GetActiveAsync();
+
     }
 }

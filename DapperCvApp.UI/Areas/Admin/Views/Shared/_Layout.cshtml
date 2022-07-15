@@ -26,12 +26,10 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Start Bootstrap </div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="list-group-item list-group-item-action @(TempData["active"]?.ToString()=="Bilgilerim"?"active":"")">Bilgilerim</a>
+                <a asp-action="ChangePassword" asp-controller="Home" asp-area="Admin" class="list-group-item list-group-item-action @(TempData["active"]?.ToString()=="Şifre"?"active":"")">Şifre Degiştir</a>
+                <a asp-action="Index" asp-controller="Certification" asp-area="Admin" class="list-group-item list-group-item-action @(TempData["active"]?.ToString()=="Sertifika"?"active":"")">Sertifikalar</a>
+                <a asp-action="Index" asp-controller="Education" asp-area="Admin" class="list-group-item list-group-item-action @(TempData["active"]?.ToString()=="egitim"?"active":"")">Egitim bilgileri</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -39,7 +37,7 @@
         <div id="page-content-wrapper">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                <button class="btn btn-primary" id="menu-toggle">Menü</button>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,8 +45,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                       @* <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>*@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -62,7 +60,25 @@
                 </div>
             </nav>
 
-            <div class="container-fluid">
+            <div class="container-fluid p-3">
+                
+                @{
+                    if (TempData["messageSuccess"]?.ToString() != null)
+                    {
+                        <div class="alert alert-info alert-dismissible fade show my-2" role="alert">
+                            @TempData["messageSuccess"].ToString()
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    else if (TempData["messageError"]?.ToString()  != null)
+                    {
+                        <div class="alert alert-info alert-dismissible fade show my-2" role="alert">
+                            @TempData["messageError"].ToString()
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                }
                 @RenderBody()
             </div>
         </div>

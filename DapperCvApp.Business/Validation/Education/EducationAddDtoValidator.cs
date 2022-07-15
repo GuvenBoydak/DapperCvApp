@@ -7,11 +7,10 @@ namespace DapperCvApp.Business
     {
         public EducationAddDtoValidator()
         {
-            RuleFor(x => x.Title).NotEmpty().WithMessage("Başlık alanı boş geçilemez.");
-            RuleFor(x => x.SubTitle).NotEmpty().WithMessage("Alt Başlık alanı boş geçilemez.");
+            RuleFor(x => x.Title).NotEmpty().WithMessage("Üniversite alanı boş geçilemez.");
+            RuleFor(x => x.SubTitle).NotEmpty().WithMessage("Bölüm alanı boş geçilemez.");
             RuleFor(x => x.Description).NotEmpty().WithMessage("Açıklama alanı boş geçilemez.");
             RuleFor(x => x.StartDate).NotEmpty().WithMessage("Başlangıç tarihi boş geçilemez.");
-            RuleFor(x => x.EndDate).NotEmpty().WithMessage("Bitiş tarihi boş geçilemez.");
         }
     }
 }

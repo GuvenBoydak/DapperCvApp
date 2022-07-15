@@ -9,5 +9,6 @@ namespace DapperCvApp.Business
 {
     public interface ICertificationService:IBaseService<Certification>
     {
+        Task<IEnumerable<Certification>> GetActiveAsync();
     }
 }

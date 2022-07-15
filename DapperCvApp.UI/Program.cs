@@ -9,13 +9,10 @@ using System.Data.SqlClient;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<AppUserLoginDtoValidator>());
+builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<AppUserPasswordDtoValidator>());
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new ServiceModule()));
-
-
-//builder.Services.AddSingleton<IDbConnection>(con => new SqlConnection(builder.Configuration.GetConnectionString("MsSql")));
 
 
 //CustomCookieAuthentication

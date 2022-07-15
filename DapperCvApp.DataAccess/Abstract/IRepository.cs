@@ -8,11 +8,11 @@ namespace DapperCvApp.DataAccess
 
         Task<T> GetByIdAsync(int id);
 
-        Task InsertAsync(T entity);
+        Task<int> InsertAsync(T entity);
 
-        void Update(T entity);
+        bool Update(T entity);
 
-        void Delete(T entity);
+        bool Delete(T entity);
 
     }
 }

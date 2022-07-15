@@ -12,6 +12,14 @@ namespace DapperCvApp.Business
             CreateMap<AppUser, AppUserListDto>().ReverseMap();
             CreateMap<AppUser, AppUserUpdateViewModel>().ReverseMap();
 
+            CreateMap<Certification,CertificationListDto>().ReverseMap();
+            CreateMap<Certification,CertificationAddDto>().ReverseMap();
+            CreateMap<Certification,CertificationUpdateDto>().ReverseMap();
+
+            CreateMap<Education, EducationListDto>().ReverseMap();
+            CreateMap<Education, EducationAddDto>().ReverseMap();
+            CreateMap<Education, EducationUpdateDto>().ReverseMap();
+
         }
     }
 }
